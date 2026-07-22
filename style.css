@@ -27,6 +27,12 @@ h1 {
     
 }
 
+#turn {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: rgb(244, 2, 2);
+}
+
 .game {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

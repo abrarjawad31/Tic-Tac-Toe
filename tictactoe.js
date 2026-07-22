@@ -1,6 +1,7 @@
 let boxes = document.querySelectorAll(".box");
 let message = document.querySelector("#message");
 let newBtn = document.querySelector("#new-btn");
+let turn = document.querySelector("#turn");
 
 let count = 0;
 
@@ -20,6 +21,7 @@ boxes.forEach((box) => {
     box.addEventListener("click", () => {
         count++;
         box.innerText = turnX ? "X" : "O";
+        turn.innerText = turnX ? "Turn: O" : "Turn: X";
         turnX = !turnX;
         box.disabled = true;
         checkWin();
@@ -33,6 +35,8 @@ newBtn.addEventListener( "click", () => {
     boxes.forEach((box) => {
         box.disabled = false;
         box.innerText = "";
+        box.classList.remove("win");
+        turn.innerText = turnX ? "Turn: X" : "Turn: O";
     });
 });
 
@@ -47,6 +51,7 @@ const checkWin = () => {
             boxes[a].classList.add("win");
             boxes[b].classList.add("win");
             boxes[c].classList.add("win");
+            turn.innerText = "";
             boxes.forEach((box) => {
                 box.disabled = true;
             });
