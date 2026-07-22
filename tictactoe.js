@@ -44,6 +44,9 @@ const checkWin = () => {
         let val3 = boxes[c].innerText;
         if(val1 !=="" && val1 === val2 && val2 === val3) {
             message.innerText = `Congratulations Player "${val1}" Wins!`;
+            boxes[a].classList.add("win");
+            boxes[b].classList.add("win");
+            boxes[c].classList.add("win");
             boxes.forEach((box) => {
                 box.disabled = true;
             });
