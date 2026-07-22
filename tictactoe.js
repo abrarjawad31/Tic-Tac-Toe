@@ -1,4 +1,5 @@
 let boxes = document.querySelectorAll(".box");
+let message = document.querySelector("#message");
 let newBtn = document.querySelector("#new-btn");
 
 let count = 0;
@@ -25,14 +26,15 @@ boxes.forEach((box) => {
     })
 })
 
-const resetGame = () => {
-    turnX = true;
+newBtn.addEventListener( "click", () => {
+    turnX =true;
     count = 0;
+    message.innerText = "";
     boxes.forEach((box) => {
         box.disabled = false;
         box.innerText = "";
     });
-}
+});
 
 const checkWin = () => {
     for(let combo of winCombos) {
@@ -41,7 +43,7 @@ const checkWin = () => {
         let val2 = boxes[b].innerText;
         let val3 = boxes[c].innerText;
         if(val1 !=="" && val1 === val2 && val2 === val3) {
-            alert(`${val1} wins!`);
+            message.innerText = `Congratulations Player "${val1}" Wins!`;
             boxes.forEach((box) => {
                 box.disabled = true;
             });
@@ -49,9 +51,7 @@ const checkWin = () => {
         }
     }
     if(count === 9) {
-        alert("It's a draw!");
+        message.innerText = "It's a Draw!";
         return;
     }
 }
-newBtn.addEventListener("click", resetGame);
-
